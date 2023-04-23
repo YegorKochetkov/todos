@@ -55,7 +55,7 @@ function App() {
 	}
 
 	return (
-		<>
+		<main>
 			<form onSubmit={async (e) => handleSubmit(e)}>
 				<input type='text' name='title' required placeholder='add todo' />
 			</form>
@@ -75,7 +75,7 @@ function App() {
 					</>
 				</p>
 			))}
-		</>
+		</main>
 	);
 }
 
