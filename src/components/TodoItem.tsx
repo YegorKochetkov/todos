@@ -48,7 +48,7 @@ function TodoItem({ todo, onLoad }: TodoItemProps) {
 			...todo,
 		};
 
-		if (typeof value === "string" && value.length > 0) {
+		if (typeof value === "string") {
 			updatedTodo.title = value;
 		}
 
@@ -84,12 +84,17 @@ function TodoItem({ todo, onLoad }: TodoItemProps) {
 				/>
 			) : (
 				<p
-					style={{ width: "30rem", display: "inline-block", margin: "0" }}
+					style={{
+						width: "30rem",
+						display: "inline-block",
+						margin: "0",
+						opacity: `${todoUpdating ? "0.5" : "1"}`,
+					}}
 					onDoubleClick={() => {
 						setIsEditing(true);
 					}}
 				>
-					{todo.title}
+					{todoUpdating ? "Updating..." : todo.title}
 				</p>
 			)}
 
