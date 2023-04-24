@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Todo } from "../types/todo.type.ts";
 
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = "http://localhost:3000/api/v1";
 
 function handleError(error: any) {
   if (error.response) {
@@ -22,28 +22,35 @@ function handleError(error: any) {
 
 export function getAll(): Promise<Todo[]> {
   return axios
-    .get("/api_v1/todos")
+    .get("/todos")
     .then((res) => res.data)
     .catch(handleError);
 }
 
 export function getOne(todoId: string): Promise<Todo> {
   return axios
-    .get(`/api_v1/todos/${todoId}`)
+    .get(`/todos/${todoId}`)
     .then((res) => res.data)
     .catch(handleError);
 }
 
 export function add(title: FormDataEntryValue): Promise<Todo> {
   return axios
-    .post("/api_v1/todos", { title })
+    .post("/todos", { title })
     .then((res) => res.data)
     .catch(handleError);
 }
 
 export function remove(todoId: string): Promise<string> {
   return axios
-    .delete(`/api_v1/todos/${todoId}`)
+    .delete(`/todos/${todoId}`)
+    .then((res) => res.data)
+    .catch(handleError);
+}
+
+export function update({ id, title, completed }: Todo): Promise<Todo> {
+  return axios
+    .put(`/todos/${id}`, { title, completed })
     .then((res) => res.data)
     .catch(handleError);
 }
