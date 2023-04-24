@@ -18,18 +18,9 @@ function App() {
 			});
 	}
 
-	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-		event.preventDefault();
-
-		const form = event.currentTarget;
-		const formData = new FormData(form);
-		const title = formData.get("title");
-
-		if (title) {
-			const newTodo = await todosApi.add(title);
-			setTodos([...todos, newTodo]);
-			form.reset();
-		}
+	async function handleAddTodo(title: string) {
+		const newTodo = await todosApi.add(title);
+		setTodos([...todos, newTodo]);
 	}
 
 	React.useEffect(() => {
@@ -43,7 +34,7 @@ function App() {
 	return (
 		<main>
 			<h1>Todos</h1>
-			<AddTodo onSubmit={handleSubmit} />
+			<AddTodo onAddTodo={handleAddTodo} />
 			{todos.map((todo) => (
 				<TodoItem key={todo.id} todo={todo} onLoad={loadTodos} />
 			))}
