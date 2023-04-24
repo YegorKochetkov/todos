@@ -16,7 +16,7 @@ module.exports = {
 	root: true,
 	rules: {
 		indent: "off",
-		"linebreak-style": ["error", "unix"],
+		"linebreak-style": "off",
 		quotes: "off",
 		"@typescript-eslint/quotes": "off",
 		semi: ["error", "always"],
