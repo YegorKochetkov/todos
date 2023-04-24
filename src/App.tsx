@@ -1,6 +1,7 @@
 import React from "react";
 import * as todosApi from "./api/todos.ts";
 import "./App.css";
+import AddTodo from "./components/AddTodo";
 import { type Todo } from "./types/todo.type";
 
 function App() {
@@ -20,11 +21,11 @@ function App() {
       });
   }
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     setTodoUpdating(true);
 
-    const form = e.currentTarget;
+    const form = event.currentTarget;
     const formData = new FormData(form);
     const title = formData.get("title");
 
@@ -37,13 +38,22 @@ function App() {
     setTodoUpdating(false);
   }
 
-  async function handleRemove(todoId: string) {
+  function handleUpdate(todo: Todo) {
     setTodoUpdating(true);
 
-    await todosApi.remove(todoId).finally(() => {
+    todosApi.update(todo).finally(() => {
       setTodoUpdating(false);
+      loadTodos();
     });
-    loadTodos();
+  }
+
+  function handleRemove(todoId: string) {
+    setTodoUpdating(true);
+
+    todosApi.remove(todoId).finally(() => {
+      setTodoUpdating(false);
+      loadTodos();
+    });
   }
 
   React.useEffect(() => {
@@ -56,18 +66,25 @@ function App() {
 
   return (
     <main>
-      <form onSubmit={async (e) => handleSubmit(e)}>
-        <input type="text" name="title" required placeholder="add todo" />
-      </form>
       <h1>Todos</h1>
+      <AddTodo handleSubmit={handleSubmit} />
       {todos.map((todo) => (
         <p key={todo.id}>
           <>
-            {todo.title} {todo.completed ? "done " : "not yet "}
+            <input
+              type="text"
+              name={`todo_${todo.id}`}
+              onBlur={(event) =>
+                handleUpdate({ ...todo, title: event.target.value })
+              }
+              defaultValue={todo.title}
+              style={{ borderColor: "transparent" }}
+            />
+            {todo.completed ? "done " : "not yet "}
             <button
               type="button"
               name="remove"
-              onClick={async () => handleRemove(todo.id)}
+              onClick={() => handleRemove(todo.id)}
               disabled={todoUpdating}
             >
               {todoUpdating ? "Wait..." : "Remove"}
