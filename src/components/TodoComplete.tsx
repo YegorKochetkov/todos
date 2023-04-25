@@ -18,7 +18,7 @@ function TodoComplete({ handleUpdate, todo }: TodoCompleteProps) {
 				name='complete'
 				value={todo.id}
 				checked={todo.completed}
-				onClick={() => handleUpdate(!todo.completed)}
+				onChange={() => handleUpdate(!todo.completed)}
 				style={{ width: "1rem", height: "1rem" }}
 			/>
 
