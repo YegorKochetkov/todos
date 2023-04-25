@@ -8,7 +8,10 @@ type TodoCompleteInputProps = {
 
 function TodoCompleteInput({ handleUpdate, todo }: TodoCompleteInputProps) {
 	return (
-		<React.Fragment>
+		<label
+			htmlFor={todo.id}
+			style={{ display: "flex", alignItems: "center", padding: "0.25rem" }}
+		>
 			<input
 				type='checkbox'
 				id={todo.id}
@@ -19,10 +22,8 @@ function TodoCompleteInput({ handleUpdate, todo }: TodoCompleteInputProps) {
 				style={{ width: "1rem", height: "1rem" }}
 			/>
 
-			<label htmlFor={todo.id} style={{ padding: "0.25rem" }}>
-				{todo.completed ? "done " : "not yet "}
-			</label>
-		</React.Fragment>
+			{todo.completed ? "done " : "not yet "}
+		</label>
 	);
 }
 
