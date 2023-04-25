@@ -1,7 +1,7 @@
 import React from "react";
 import { Todo } from "../types/todo.type";
 
-type TodoTitleInputProps = {
+type TodoTitleProps = {
 	isEditing: boolean;
 	setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
 	isUpdating: boolean;
@@ -9,7 +9,7 @@ type TodoTitleInputProps = {
 	todo: Todo;
 };
 
-function TodoTitleInput(props: TodoTitleInputProps) {
+function TodoTitle(props: TodoTitleProps) {
 	const { isEditing, setIsEditing, todo, isUpdating, handleUpdate } = props;
 
 	return (
@@ -65,4 +65,4 @@ function TodoTitleInput(props: TodoTitleInputProps) {
 	);
 }
 
-export default TodoTitleInput;
+export default TodoTitle;

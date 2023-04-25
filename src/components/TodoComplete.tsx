@@ -1,12 +1,12 @@
 import React from "react";
 import { Todo } from "../types/todo.type";
 
-type TodoCompleteInputProps = {
+type TodoCompleteProps = {
 	handleUpdate: (value: string | boolean) => Promise<void>;
 	todo: Todo;
 };
 
-function TodoCompleteInput({ handleUpdate, todo }: TodoCompleteInputProps) {
+function TodoComplete({ handleUpdate, todo }: TodoCompleteProps) {
 	return (
 		<label
 			htmlFor={todo.id}
@@ -27,4 +27,4 @@ function TodoCompleteInput({ handleUpdate, todo }: TodoCompleteInputProps) {
 	);
 }
 
-export default TodoCompleteInput;
+export default TodoComplete;
