@@ -1,5 +1,7 @@
 import React from "react";
 import * as todosApi from "../api/todos.ts";
+import TodoCompleteInput from "./TodoCompleteInput.tsx";
+import TodoTitleInput from "./TodoTitleInput.tsx";
 import { type Todo } from "../types/todo.type";
 
 type TodoItemProps = {
@@ -76,63 +78,10 @@ function TodoItem({ todo, onLoad }: TodoItemProps) {
 				onSubmit={(event) => handleSubmit(event)}
 				style={{ display: "flex", gap: "0.25rem", alignItems: "center" }}
 			>
-				{isEditing ? (
-					<input
-						type='text'
-						name={"todo"}
-						id='todo_title'
-						onBlur={(event) => handleUpdate(event.target.value.trimStart())}
-						defaultValue={todo.title}
-						style={{
-							boxSizing: "border-box",
-							width: "20rem",
-							height: "2rem",
-							padding: "0.25rem",
-							margin: "0",
-							marginBottom: "0.25rem",
-							borderRadius: "3px",
-							fontSize: "1rem",
-						}}
-						onKeyDown={(event) => setIsEditing(!(event.key === "Escape"))}
-						required
-						autoFocus
-					/>
-				) : (
-					<label
-						htmlFor='todo_title'
-						style={{
-							boxSizing: "border-box",
-							display: "inline-block",
-							width: "20rem",
-							height: "2rem",
-							padding: "0.25rem",
-							margin: "0",
-							marginBottom: "0.25rem",
-							border: "2px solid transparent",
-							borderRadius: "3px",
-							fontSize: "1rem",
-						}}
-						onDoubleClick={() => {
-							setIsEditing(true);
-						}}
-						onKeyUpCapture={(event) =>
-							setIsEditing(() => event.key === "Enter")
-						}
-						tabIndex={0}
-					>
-						{todoUpdating ? "Updating..." : todo.title}
-					</label>
-				)}
-				<input
-					type='checkbox'
-					id={todo.id}
-					name='complete'
-					value={todo.id}
-					checked={todo.completed}
-					onClick={() => handleUpdate(!todo.completed)}
+				<TodoTitleInput
+					{...{ isEditing, setIsEditing, todoUpdating, handleUpdate, todo }}
 				/>
-				<label htmlFor={todo.id}>{todo.completed ? "done " : "not yet "}</label>
-
+				<TodoCompleteInput {...{ handleUpdate, todo }} />
 				<button
 					type='button'
 					name='remove'
