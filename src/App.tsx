@@ -35,12 +35,10 @@ function App() {
 	return (
 		<main>
 			<h1>Todos</h1>
-			<p>
+			<div style={{ marginBottom: "1rem" }}>
 				<TodoStatusToggle {...{ loadTodos, todos }} />
-			</p>
-			<p>
-				<AddTodo {...{ handleAddTodo }} />
-			</p>
+			</div>
+			<AddTodo {...{ handleAddTodo }} />
 			<ol style={{ paddingLeft: "1.5rem" }}>
 				{todos.map((todo) => (
 					<TodoItem key={todo.id} todo={todo} onLoad={loadTodos} />
