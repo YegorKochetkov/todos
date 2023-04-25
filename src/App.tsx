@@ -39,7 +39,7 @@ function App() {
 				<TodoStatusToggle {...{ loadTodos, todos }} />
 			</p>
 			<p>
-				<AddTodo onAddTodo={handleAddTodo} />
+				<AddTodo {...{ handleAddTodo }} />
 			</p>
 			<ol style={{ paddingLeft: "1.5rem" }}>
 				{todos.map((todo) => (
