@@ -1,13 +1,13 @@
 import React from "react";
 import * as todosApi from "../api/todos.ts";
-import { Todo } from "../types/todo.type";
+import { Todo } from "../types/todo.type.ts";
 
-type TodoStatusToggleProps = {
+type TodosStatusToggleProps = {
 	todos: Todo[];
 	loadTodos: () => Promise<void>;
 };
 
-function TodoStatusToggle({ todos, loadTodos }: TodoStatusToggleProps) {
+function TodosStatusToggle({ todos, loadTodos }: TodosStatusToggleProps) {
 	const [completeStatus, setCompleteStatus] = React.useState(true);
 	const [isUpdating, setIsUpdating] = React.useState(false);
 
@@ -33,4 +33,4 @@ function TodoStatusToggle({ todos, loadTodos }: TodoStatusToggleProps) {
 	);
 }
 
-export default TodoStatusToggle;
+export default TodosStatusToggle;

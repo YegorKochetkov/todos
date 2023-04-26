@@ -3,7 +3,8 @@ import * as todosApi from "./api/todos.ts";
 import "./App.css";
 import AddTodo from "./components/AddTodo";
 import TodoItem from "./components/TodoItem.tsx";
-import TodoStatusToggle from "./components/TodoStatusToggle.tsx";
+import TodosClearAllCompleted from "./components/TodosClearAllCompleted.tsx";
+import TodosStatusToggle from "./components/TodosStatusToggle.tsx";
 import { type Todo } from "./types/todo.type";
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
 		<main>
 			<h1>Todos</h1>
 			<div style={{ marginBottom: "1rem" }}>
-				<TodoStatusToggle {...{ loadTodos, todos }} />
+				<TodosStatusToggle {...{ loadTodos, todos }} />
 			</div>
 			<AddTodo {...{ handleAddTodo }} />
 			<ol style={{ paddingLeft: "1.5rem" }}>
@@ -47,6 +48,7 @@ function App() {
 			<p>
 				<b>Enter</b>, <b>Space</b> or <b>Double-click</b> to edit a todo
 			</p>
+			<TodosClearAllCompleted {...{ loadTodos, todos }} />
 		</main>
 	);
 }
