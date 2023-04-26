@@ -27,37 +27,39 @@ function TodoItem({ todo, onLoad }: TodoItemProps) {
 		}
 
 		if (title && title !== todo.title) {
-			handleUpdate(title);
+			handleTitleUpdate(title);
 		}
 
 		setIsEditing(false);
 	}
 
-	async function handleUpdate(value: string | boolean) {
+	async function handleTitleUpdate(title: string) {
 		setIsUpdating(true);
 		setIsEditing(false);
 
-		if (typeof value === "string" && value.length === 0) {
-			setIsUpdating(false);
-			return;
-		}
-
-		if (todo.title === value) {
+		if (title.length === 0 || title === todo.title) {
 			setIsUpdating(false);
 			return;
 		}
 
 		const updatedTodo = {
 			...todo,
+			title,
 		};
 
-		if (typeof value === "string") {
-			updatedTodo.title = value;
-		}
+		await todosApi.update(updatedTodo);
+		await onLoad();
+		setIsUpdating(false);
+	}
 
-		if (typeof value === "boolean") {
-			updatedTodo.completed = value;
-		}
+	async function handleCompleteUpdate(completed: boolean) {
+		setIsUpdating(true);
+		setIsEditing(false);
+
+		const updatedTodo = {
+			...todo,
+			completed,
+		};
 
 		await todosApi.update(updatedTodo);
 		await onLoad();
@@ -80,9 +82,9 @@ function TodoItem({ todo, onLoad }: TodoItemProps) {
 				style={{ display: "flex", gap: "0.25rem", alignItems: "center" }}
 			>
 				<TodoTitle
-					{...{ isEditing, setIsEditing, isUpdating, handleUpdate, todo }}
+					{...{ isEditing, setIsEditing, isUpdating, handleTitleUpdate, todo }}
 				/>
-				<TodoComplete {...{ handleUpdate, todo }} />
+				<TodoComplete {...{ handleCompleteUpdate, todo }} />
 				<TodoRemove id={todo.id} {...{ handleRemove, isUpdating }} />
 			</form>
 		</li>

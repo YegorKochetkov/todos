@@ -5,12 +5,13 @@ type TodoTitleProps = {
 	isEditing: boolean;
 	setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
 	isUpdating: boolean;
-	handleUpdate: (value: string | boolean) => Promise<void>;
+	handleTitleUpdate: (title: string) => Promise<void>;
 	todo: Todo;
 };
 
 function TodoTitle(props: TodoTitleProps) {
-	const { isEditing, setIsEditing, todo, isUpdating, handleUpdate } = props;
+	const { isEditing, setIsEditing, todo, isUpdating, handleTitleUpdate } =
+		props;
 
 	return (
 		<React.Fragment>
@@ -19,7 +20,7 @@ function TodoTitle(props: TodoTitleProps) {
 					type='text'
 					name={"todo"}
 					id='todo_title'
-					onBlur={(event) => handleUpdate(event.target.value.trimStart())}
+					onBlur={(event) => handleTitleUpdate(event.target.value.trimStart())}
 					onKeyDown={(event) => setIsEditing(!(event.key === "Escape"))}
 					defaultValue={todo.title}
 					style={{

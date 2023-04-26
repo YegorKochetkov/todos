@@ -2,11 +2,11 @@ import React from "react";
 import { Todo } from "../types/todo.type";
 
 type TodoCompleteProps = {
-	handleUpdate: (value: string | boolean) => Promise<void>;
+	handleCompleteUpdate: (completed: boolean) => Promise<void>;
 	todo: Todo;
 };
 
-function TodoComplete({ handleUpdate, todo }: TodoCompleteProps) {
+function TodoComplete({ handleCompleteUpdate, todo }: TodoCompleteProps) {
 	return (
 		<label
 			htmlFor={todo.id}
@@ -18,7 +18,7 @@ function TodoComplete({ handleUpdate, todo }: TodoCompleteProps) {
 				name='complete'
 				value={todo.id}
 				checked={todo.completed}
-				onChange={() => handleUpdate(!todo.completed)}
+				onChange={() => handleCompleteUpdate(!todo.completed)}
 				style={{ width: "1rem", height: "1rem" }}
 			/>
 
