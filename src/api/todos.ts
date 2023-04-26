@@ -27,6 +27,20 @@ export function getAll(): Promise<Todo[]> {
     .catch(handleError);
 }
 
+export function updateAll(todos: Todo[]): Promise<void> {
+  return axios
+    .patch("/todos?action=update", { items: todos })
+    .then((res) => res.data)
+    .catch(handleError);
+}
+
+export function deleteAll(ids: string[]): Promise<void> {
+  return axios
+    .patch("/todos?action=delete", { ids })
+    .then((res) => res.data)
+    .catch(handleError);
+}
+
 export function getOne(todoId: string): Promise<Todo> {
   return axios
     .get(`/todos/${todoId}`)

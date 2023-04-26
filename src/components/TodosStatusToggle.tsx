@@ -14,11 +14,12 @@ function TodosStatusToggle({ todos, loadTodos }: TodosStatusToggleProps) {
 	function toggleAll() {
 		setIsUpdating(true);
 
-		Promise.all(
-			todos
-				.filter((todo) => todo.completed !== completeStatus)
-				.map((todo) => todosApi.update({ ...todo, completed: completeStatus }))
-		)
+		todosApi
+			.updateAll(
+				todos
+					.filter((todo) => todo.completed !== completeStatus)
+					.map((todo) => ({ ...todo, completed: completeStatus }))
+			)
 			.then(loadTodos)
 			.finally(() => {
 				setCompleteStatus(!completeStatus);

@@ -12,15 +12,16 @@ function TodosClearAllCompleted({ todos, loadTodos }: TodoClearAllProps) {
 
 	function clearAll() {
 		setIsUpdating(true);
+		const filteredTodos = todos.filter((todo) => todo.completed === true);
 
-		Promise.all(
-			todos
-				.filter((todo) => todo.completed === true)
-				.map((todo) => todosApi.remove(todo.id))
-		)
-			.then((todos) => {
-				if (todos.length > 0) loadTodos();
-			})
+		if (filteredTodos.length === 0) {
+			setIsUpdating(false);
+			return;
+		}
+
+		todosApi
+			.deleteAll(filteredTodos.map((todo) => todo.id))
+			.then(loadTodos)
 			.finally(() => setIsUpdating(false));
 	}
 
