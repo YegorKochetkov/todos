@@ -31,7 +31,7 @@ function App() {
 		<main>
 			<h1>Todos</h1>
 			<div style={{ marginBottom: "1rem" }}>
-				<TodosStatusToggle {...{ loadTodos, todos: filteredTodos, filter }} />
+				<TodosStatusToggle {...{ loadTodos, todos: filteredTodos }} />
 			</div>
 			<AddTodo {...{ handleAddTodo }} />
 			<ol style={{ paddingLeft: "1.5rem" }}>
