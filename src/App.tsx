@@ -9,12 +9,6 @@ import TodosStatusToggle from "./components/TodosStatusToggle.tsx";
 import useFilter from "./utils/useFilter.tsx";
 import { type Todo } from "./types/todo.type";
 
-export enum Filters {
-	all = "all",
-	completed = "completed",
-	active = "active",
-}
-
 function App() {
 	const [todos, setTodos] = React.useState<Todo[]>([]);
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Filters } from "../App";
+import { Filters } from "../components/TodosFilter";
 import { Todo } from "../types/todo.type";
 
 function useFilter(todos: Todo[]) {
