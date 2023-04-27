@@ -28,7 +28,7 @@ function TodosStatusToggle({ todos, loadTodos }: TodosStatusToggleProps) {
 	}
 
 	return (
-		<button onClick={toggleAll}>
+		<button onClick={toggleAll} disabled={isUpdating}>
 			{isUpdating ? "Wait..." : "Toggle complete status"}
 		</button>
 	);
