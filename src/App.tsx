@@ -17,17 +17,11 @@ export enum Filters {
 
 function App() {
 	const [todos, setTodos] = React.useState<Todo[]>([]);
-	const [isLoading, setLoading] = React.useState(true);
 
 	const [filter, setFilter, filteredTodos] = useFilter(todos);
 
 	function loadTodos() {
-		return todosApi
-			.getAll()
-			.then(setTodos)
-			.finally(() => {
-				setLoading(false);
-			});
+		return todosApi.getAll().then(setTodos);
 	}
 
 	async function handleAddTodo(title: string) {
@@ -38,10 +32,6 @@ function App() {
 	React.useEffect(() => {
 		loadTodos();
 	}, []);
-
-	if (isLoading) {
-		return <h2>Loading...</h2>;
-	}
 
 	return (
 		<main>
