@@ -13,6 +13,7 @@ type TodosFilterType = {
 
 function TodosFilter({ filter, setFilter }: TodosFilterType) {
 	return (
+		// TODO: add in css class outline to label when focused
 		<fieldset style={{ border: "none" }}>
 			<label
 				htmlFor='all'
@@ -35,10 +36,9 @@ function TodosFilter({ filter, setFilter }: TodosFilterType) {
 					value='all'
 					checked={filter === Filters.all}
 					onChange={() => setFilter(Filters.all)}
-					style={{ visibility: "hidden", position: "absolute" }}
+					style={{ position: "absolute", opacity: "0" }}
 				/>
 			</label>
-
 			<label
 				htmlFor='completed'
 				style={{
@@ -60,10 +60,9 @@ function TodosFilter({ filter, setFilter }: TodosFilterType) {
 					value='completed'
 					checked={filter === Filters.completed}
 					onChange={() => setFilter(Filters.completed)}
-					style={{ visibility: "hidden", position: "absolute" }}
+					style={{ position: "absolute", opacity: "0" }}
 				/>
 			</label>
-
 			<label
 				htmlFor='active'
 				style={{
@@ -85,7 +84,7 @@ function TodosFilter({ filter, setFilter }: TodosFilterType) {
 					value='active'
 					checked={filter === Filters.active}
 					onChange={() => setFilter(Filters.active)}
-					style={{ visibility: "hidden", position: "absolute" }}
+					style={{ position: "absolute", opacity: "0" }}
 				/>
 			</label>
 		</fieldset>
