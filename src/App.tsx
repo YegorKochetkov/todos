@@ -31,12 +31,12 @@ function App() {
 		<main>
 			<h1>Todos</h1>
 			<div style={{ marginBottom: "1rem" }}>
-				<TodosStatusToggle {...{ loadTodos, todos: filteredTodos }} />
+				<TodosStatusToggle {...{ loadTodos, todos: filteredTodos, filter }} />
 			</div>
 			<AddTodo {...{ handleAddTodo }} />
 			<ol style={{ paddingLeft: "1.5rem" }}>
 				{filteredTodos.map((todo) => (
-					<TodoItem key={todo.id} todo={todo} onLoad={loadTodos} />
+					<TodoItem key={todo.id} {...{ todo, loadTodos }} />
 				))}
 			</ol>
 			<p>

@@ -7,10 +7,10 @@ import { type Todo } from "../types/todo.type";
 
 type TodoItemProps = {
 	todo: Todo;
-	onLoad: () => Promise<void>;
+	loadTodos: () => Promise<void>;
 };
 
-function TodoItem({ todo, onLoad }: TodoItemProps) {
+function TodoItem({ todo, loadTodos }: TodoItemProps) {
 	const [isUpdating, setIsUpdating] = React.useState(false);
 	const [isEditing, setIsEditing] = React.useState(false);
 
@@ -48,7 +48,7 @@ function TodoItem({ todo, onLoad }: TodoItemProps) {
 		};
 
 		await todosApi.update(updatedTodo);
-		await onLoad();
+		await loadTodos();
 		setIsUpdating(false);
 	}
 
@@ -62,7 +62,7 @@ function TodoItem({ todo, onLoad }: TodoItemProps) {
 		};
 
 		await todosApi.update(updatedTodo);
-		await onLoad();
+		await loadTodos();
 		setIsUpdating(false);
 	}
 
@@ -70,7 +70,7 @@ function TodoItem({ todo, onLoad }: TodoItemProps) {
 		setIsUpdating(true);
 
 		await todosApi.remove(todoId);
-		await onLoad();
+		await loadTodos();
 		setIsUpdating(false);
 	}
 
