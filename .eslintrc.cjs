@@ -6,6 +6,7 @@ module.exports = {
 	extends: [
 		"plugin:react/recommended",
 		"plugin:@typescript-eslint/recommended",
+		"plugin:react/jsx-runtime",
 	],
 	parserOptions: {
 		ecmaVersion: "latest",
@@ -25,5 +26,7 @@ module.exports = {
 		"object-curly-spacing": "off",
 		"@typescript-eslint/object-curly-spacing": "off",
 		"comma-dangle": "off",
+		"no-unused-vars": "off",
+		"@typescript-eslint/no-unused-vars": "off",
 	},
 };

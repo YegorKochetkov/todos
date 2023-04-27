@@ -1,5 +1,3 @@
-import React from "react";
-
 type TodoRemoveProps = {
 	isUpdating: boolean;
 	handleRemove: (todoId: string) => Promise<void>;
