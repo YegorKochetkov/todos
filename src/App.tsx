@@ -39,13 +39,15 @@ function App() {
 					<TodoItem key={todo.id} {...{ todo, loadTodos }} />
 				))}
 			</ol>
-			<p>
-				<b>Enter</b>, <b>Space</b> or <b>Double-click</b> to edit a todo
-			</p>
 			<div style={{ marginBottom: "1rem" }}>
 				<TodosClearAllCompleted {...{ loadTodos, todos: filteredTodos }} />
 			</div>
 			<TodosFilter {...{ filter, setFilter }} />
+			<p>
+				<b>Enter</b>, <b>Space</b> or <b>Double-click</b> to edit a todo
+				<br />
+				<b>Arrow</b> keys to switch filters
+			</p>
 		</main>
 	);
 }
