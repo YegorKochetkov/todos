@@ -17,22 +17,13 @@ function TodosStatusToggle({ todos, loadTodos }: TodosStatusToggleProps) {
 
 		setIsUpdating(true);
 
-		let filteredTodos: Todo[];
-		const todosForToggleStatus = todos.filter((todo) => !todo.completed);
-
-		if (todosForToggleStatus.length === 0) {
-			filteredTodos = todos;
-		} else {
-			filteredTodos = todosForToggleStatus;
-		}
-
-		filteredTodos = todos.map((todo) => ({
+		const updatedTodos: Todo[] = todos.map((todo) => ({
 			...todo,
 			completed: !todo.completed,
 		}));
 
 		todosApi
-			.updateAll(filteredTodos)
+			.updateAll(updatedTodos)
 			.then(loadTodos)
 			.finally(() => {
 				setIsUpdating(false);
