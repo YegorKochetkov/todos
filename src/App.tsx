@@ -11,7 +11,6 @@ import { type Todo } from "./types/todo.type";
 
 function App() {
 	const [todos, setTodos] = React.useState<Todo[]>([]);
-
 	const [filter, setFilter, filteredTodos] = useFilter(todos);
 
 	function loadTodos() {
