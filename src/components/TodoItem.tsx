@@ -1,5 +1,5 @@
 import React from "react";
-import * as todosApi from "../api/todos.ts";
+import todosApi from "../api/todos.ts";
 import TodoComplete from "./TodoComplete.tsx";
 import TodoRemove from "./TodoRemove.tsx";
 import TodoTitle from "./TodoTitle.tsx";

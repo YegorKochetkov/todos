@@ -1,5 +1,5 @@
 import React from "react";
-import * as todosApi from "../api/todos.ts";
+import todosApi from "../api/todos.ts";
 import { Todo } from "../types/todo.type.ts";
 
 type TodoClearAllProps = {

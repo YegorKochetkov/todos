@@ -68,3 +68,7 @@ export function update({ id, title, completed }: Todo): Promise<Todo> {
     .then((res) => res.data)
     .catch(handleError);
 }
+
+const todosApi = { update, updateAll, deleteAll, getAll, getOne, add, remove };
+
+export default todosApi;
