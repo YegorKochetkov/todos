@@ -1,6 +1,11 @@
 import React from "react";
-import { Filters } from "../components/TodosFilter";
 import { Todo } from "../types/todo.type";
+
+export enum Filters {
+	all = "all",
+	completed = "completed",
+	active = "active",
+}
 
 function useFilter(todos: Todo[]) {
 	const [filter, setFilter] = React.useState(Filters.all);

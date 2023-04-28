@@ -1,10 +1,5 @@
 import React from "react";
-
-export enum Filters {
-	all = "all",
-	completed = "completed",
-	active = "active",
-}
+import { Filters } from "../utils/useFilter";
 
 type TodosFilterType = {
 	filter: Filters;
