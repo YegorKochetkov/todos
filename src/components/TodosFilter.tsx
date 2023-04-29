@@ -21,9 +21,9 @@ function TodosFilter({ filter, setFilter }: TodosFilterType) {
 					padding: "0.25rem 0.5rem",
 					textAlign: "center",
 					position: "relative",
+					marginRight: "0.5rem",
 				}}
 			>
-				all
 				<input
 					type='radio'
 					id='all'
@@ -31,8 +31,9 @@ function TodosFilter({ filter, setFilter }: TodosFilterType) {
 					value='all'
 					checked={filter === Filters.all}
 					onChange={() => setFilter(Filters.all)}
-					style={{ position: "absolute", opacity: "0" }}
+					style={{ position: "absolute", opacity: "0", left: "-0.75rem" }}
 				/>
+				all
 			</label>
 			<label
 				htmlFor='completed'
@@ -45,9 +46,9 @@ function TodosFilter({ filter, setFilter }: TodosFilterType) {
 					padding: "0.25rem 0.5rem",
 					textAlign: "center",
 					position: "relative",
+					marginRight: "0.5rem",
 				}}
 			>
-				completed
 				<input
 					type='radio'
 					id='completed'
@@ -55,8 +56,9 @@ function TodosFilter({ filter, setFilter }: TodosFilterType) {
 					value='completed'
 					checked={filter === Filters.completed}
 					onChange={() => setFilter(Filters.completed)}
-					style={{ position: "absolute", opacity: "0" }}
+					style={{ position: "absolute", opacity: "0", left: "-0.75rem" }}
 				/>
+				completed
 			</label>
 			<label
 				htmlFor='active'
@@ -69,9 +71,9 @@ function TodosFilter({ filter, setFilter }: TodosFilterType) {
 					padding: "0.25rem 0.5rem",
 					textAlign: "center",
 					position: "relative",
+					marginRight: "0.5rem",
 				}}
 			>
-				active
 				<input
 					type='radio'
 					id='active'
@@ -79,8 +81,9 @@ function TodosFilter({ filter, setFilter }: TodosFilterType) {
 					value='active'
 					checked={filter === Filters.active}
 					onChange={() => setFilter(Filters.active)}
-					style={{ position: "absolute", opacity: "0" }}
+					style={{ position: "absolute", opacity: "0", left: "-0.75rem" }}
 				/>
+				active
 			</label>
 		</fieldset>
 	);

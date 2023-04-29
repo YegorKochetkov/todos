@@ -12,7 +12,7 @@ type TodoTitleProps = {
 function TodoTitle(props: TodoTitleProps) {
 	const { isEditing, setIsEditing, todo, isUpdating, handleTitleUpdate } =
 		props;
-
+	// TODO: show input & label, set invisible input (set visible when edit)
 	return (
 		<React.Fragment>
 			{isEditing ? (
