@@ -1,12 +1,11 @@
 import React from "react";
+import { TodosContext, TodosContextType } from "../../App";
+import styles from "./AddTodo.module.scss";
 
-type AddTodoProps = {
-	handleAddTodo: (title: string) => Promise<void>;
-};
-
-function AddTodo({ handleAddTodo }: AddTodoProps) {
+function AddTodo() {
 	const [isAdding, setIsAdding] = React.useState(false);
 	const [title, setTitle] = React.useState("");
+	const { handleAddTodo } = React.useContext(TodosContext) as TodosContextType;
 
 	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
@@ -23,15 +22,20 @@ function AddTodo({ handleAddTodo }: AddTodoProps) {
 				type='text'
 				name='title'
 				required
-				placeholder='add todo'
+				placeholder='What needs to be done?'
 				value={title}
 				onChange={(event) => setTitle(event.target.value.trimStart())}
+				className={styles.newTodo}
 			/>
-			<input
+			<button
 				type='submit'
-				value={isAdding ? "Wait" : "Add"}
 				disabled={isAdding}
-			/>
+				hidden={!title}
+				name='add todo'
+				title='Add todo'
+			>
+				{isAdding ? "⌛" : "➕"}
+			</button>
 		</form>
 	);
 }

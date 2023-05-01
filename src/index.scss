@@ -1,0 +1,50 @@
+* {
+	box-sizing: border-box;
+
+	&:focus {
+		outline: 1px solid var(--todoApp-red-darkTheme);
+	}
+}
+
+:where(body) {
+	--background-color: #f5f5f5;
+	--text-color: #4d4d4d;
+	--todoApp-background: #fff;
+	--todoApp-text-color: #8e8e8e;
+	--todoApp-red: rgba(175, 47, 47, 0.15);
+	--todoApp-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+		0 25px 50px 0 rgba(0, 0, 0, 0.1);
+	--todoApp-shadow-inner: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+	--todoApp-shadow-inner-sm: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+
+	--background-color-darkTheme: hsl(228, 5%, 15%);
+	--text-color-darkTheme: hsl(230, 12%, 90%);
+	--todoApp-red-darkTheme: rgba(175, 47, 47, 0.75);
+	--todoApp-background-darkTheme: #4d4d4d;
+	--todoApp-shadow-darkTheme: 0 2px 4px 0 rgba(0, 0, 0, 0.8),
+		0 25px 50px 0 rgba(0, 0, 0, 0.9);
+	--todoApp-shadow-inner-sm-darkTheme: inset 0 -2px 1px rgba(0, 0, 0, 0.3);
+
+	@media (prefers-color-scheme: dark) {
+		--background-color: var(--background-color-darkTheme);
+		--text-color: var(--text-color-darkTheme);
+		--todoApp-red: var(--todoApp-red-darkTheme);
+		--todoApp-background: var(--todoApp-background-darkTheme);
+		--todoApp-shadow: var(--todoApp-shadow-darkTheme);
+	}
+}
+
+body {
+	color-scheme: light dark;
+
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-size: 1rem;
+	font-weight: 300;
+
+	background-color: var(--background-color);
+	color: var(--text-color);
+
+	min-width: 14rem;
+	max-width: 45rem;
+	margin: 0 auto;
+}

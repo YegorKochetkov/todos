@@ -1,14 +1,13 @@
 import React from "react";
 import todosApi from "../api/todos.ts";
+import { TodosContext, TodosContextType } from "../App.tsx";
 import { Todo } from "../types/todo.type.ts";
 
-type TodosStatusToggleProps = {
-	todos: Todo[];
-	loadTodos: () => Promise<void>;
-};
-
-function TodosStatusToggle({ todos, loadTodos }: TodosStatusToggleProps) {
+function TodosStatusToggle() {
 	const [isUpdating, setIsUpdating] = React.useState(false);
+	const { loadTodos, filteredTodos: todos } = React.useContext(
+		TodosContext
+	) as TodosContextType;
 
 	function toggleAll() {
 		if (todos.length === 0) {
@@ -31,8 +30,14 @@ function TodosStatusToggle({ todos, loadTodos }: TodosStatusToggleProps) {
 	}
 
 	return (
-		<button onClick={toggleAll} disabled={isUpdating}>
-			{isUpdating ? "Wait..." : "Toggle complete status"}
+		<button
+			onClick={toggleAll}
+			disabled={isUpdating}
+			title='Toggle all todos status'
+			name='toggle status'
+			type='button'
+		>
+			{isUpdating ? "⌛" : "✔️"}
 		</button>
 	);
 }
