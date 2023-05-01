@@ -1,11 +1,12 @@
-import { Todo } from "../types/todo.type";
+import React from "react";
+import { TodosContext, TodosContextType } from "../App";
 import TodoItem from "./TodoItem";
 
-type TodosListProps = {
-	todos: Todo[];
-	loadTodos: () => Promise<void>;
-};
-function TodosList({ todos, loadTodos }: TodosListProps) {
+function TodosList() {
+	const { filteredTodos: todos, loadTodos } = React.useContext(
+		TodosContext
+	) as TodosContextType;
+
 	return (
 		<ol>
 			{todos.map((todo) => (

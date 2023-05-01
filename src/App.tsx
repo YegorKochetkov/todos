@@ -1,20 +1,30 @@
 import React from "react";
 import todosApi from "./api/todos.ts";
-import "./App.css";
+import styles from "./App.module.scss";
 import ActiveTodosCounter from "./components/ActiveTodosCounter.tsx";
-import AddTodo from "./components/AddTodo";
 import TodosClearAllCompleted from "./components/TodosClearAllCompleted.tsx";
 import TodosFilter from "./components/TodosFilter.tsx";
 import TodosHint from "./components/TodosHint.tsx";
 import TodosList from "./components/TodosList.tsx";
-import TodosStatusToggle from "./components/TodosStatusToggle.tsx";
-import useFilter from "./utils/useFilter.tsx";
+import TodoHeader from "./containers/TodoHeader/TodoHeader.tsx";
+import useFilter, { Filters } from "./utils/useFilter.tsx";
 import { type Todo } from "./types/todo.type";
+
+export type TodosContextType = {
+	filteredTodos: Todo[];
+	loadTodos: () => Promise<void>;
+	handleAddTodo: (title: string) => Promise<void>;
+	filter: Filters;
+	setFilter: React.Dispatch<React.SetStateAction<Filters>>;
+	activeTodos: number;
+};
+
+export const TodosContext = React.createContext<TodosContextType | null>(null);
 
 function App() {
 	const [todos, setTodos] = React.useState<Todo[]>([]);
 	const [filter, setFilter, filteredTodos] = useFilter(todos);
-	const activeTodos = todos.filter((todo) => !todo.completed);
+	const activeTodos = todos.filter((todo) => !todo.completed).length;
 
 	function loadTodos() {
 		return todosApi.getAll().then(setTodos);
@@ -29,22 +39,30 @@ function App() {
 		loadTodos();
 	}, []);
 
+	const todosCtx = {
+		handleAddTodo,
+		loadTodos,
+		filteredTodos,
+		filter,
+		setFilter,
+		activeTodos,
+	};
+
 	return (
-		<main
-			style={{
-				display: "grid",
-				gridTemplateColumns: "min-content",
-				gap: "1.5rem",
-			}}
-		>
-			<h1>Todos</h1>
-			<TodosStatusToggle {...{ loadTodos, todos: filteredTodos }} />
-			<AddTodo {...{ handleAddTodo }} />
-			<TodosList {...{ todos: filteredTodos, loadTodos }} />
-			<TodosClearAllCompleted {...{ loadTodos, todos: filteredTodos }} />
-			<ActiveTodosCounter todos={activeTodos.length} />
-			<TodosFilter {...{ filter, setFilter }} />
-			<TodosHint />
+		<main>
+			<TodosContext.Provider value={todosCtx}>
+				<article className={styles.todoApp}>
+					<h1>Todos</h1>
+					<section>
+						<TodoHeader />
+						<TodosList />
+						<TodosClearAllCompleted />
+						<ActiveTodosCounter />
+						<TodosFilter />
+						<TodosHint />
+					</section>
+				</article>
+			</TodosContext.Provider>
 		</main>
 	);
 }

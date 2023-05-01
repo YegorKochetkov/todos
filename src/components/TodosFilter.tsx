@@ -1,12 +1,12 @@
 import React from "react";
+import { TodosContext, TodosContextType } from "../App";
 import { Filters } from "../utils/useFilter";
 
-type TodosFilterType = {
-	filter: Filters;
-	setFilter: React.Dispatch<React.SetStateAction<Filters>>;
-};
+function TodosFilter() {
+	const { filter, setFilter } = React.useContext(
+		TodosContext
+	) as TodosContextType;
 
-function TodosFilter({ filter, setFilter }: TodosFilterType) {
 	return (
 		// TODO: add in css class outline to label when focused
 		<fieldset style={{ border: "none" }}>

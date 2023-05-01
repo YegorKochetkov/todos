@@ -1,14 +1,12 @@
 import React from "react";
 import todosApi from "../api/todos.ts";
-import { Todo } from "../types/todo.type.ts";
+import { TodosContext, TodosContextType } from "../App.tsx";
 
-type TodoClearAllProps = {
-	todos: Todo[];
-	loadTodos: () => Promise<void>;
-};
-
-function TodosClearAllCompleted({ todos, loadTodos }: TodoClearAllProps) {
+function TodosClearAllCompleted() {
 	const [isUpdating, setIsUpdating] = React.useState(false);
+	const { filteredTodos: todos, loadTodos } = React.useContext(
+		TodosContext
+	) as TodosContextType;
 
 	function clearAll() {
 		setIsUpdating(true);
