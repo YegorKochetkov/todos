@@ -6,6 +6,7 @@ import AddTodo from "./components/AddTodo";
 import TodoItem from "./components/TodoItem.tsx";
 import TodosClearAllCompleted from "./components/TodosClearAllCompleted.tsx";
 import TodosFilter from "./components/TodosFilter.tsx";
+import TodosHint from "./components/TodosHint.tsx";
 import TodosStatusToggle from "./components/TodosStatusToggle.tsx";
 import useFilter from "./utils/useFilter.tsx";
 import { type Todo } from "./types/todo.type";
@@ -47,11 +48,7 @@ function App() {
 			</div>
 			<ActiveTodosCounter todos={activeTodos.length} />
 			<TodosFilter {...{ filter, setFilter }} />
-			<p>
-				<b>Enter</b>, <b>Space</b> or <b>Double-click</b> to edit a todo
-				<br />
-				<b>Arrow</b> keys to switch filters
-			</p>
+			<TodosHint />
 		</main>
 	);
 }
