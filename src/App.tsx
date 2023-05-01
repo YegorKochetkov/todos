@@ -7,6 +7,7 @@ import TodoItem from "./components/TodoItem.tsx";
 import TodosClearAllCompleted from "./components/TodosClearAllCompleted.tsx";
 import TodosFilter from "./components/TodosFilter.tsx";
 import TodosHint from "./components/TodosHint.tsx";
+import TodosList from "./components/TodosList.tsx";
 import TodosStatusToggle from "./components/TodosStatusToggle.tsx";
 import useFilter from "./utils/useFilter.tsx";
 import { type Todo } from "./types/todo.type";
@@ -30,22 +31,18 @@ function App() {
 	}, []);
 
 	return (
-		<main>
+		<main
+			style={{
+				display: "grid",
+				gridTemplateColumns: "min-content",
+				gap: "1.5rem",
+			}}
+		>
 			<h1>Todos</h1>
-			<div style={{ marginBottom: "1rem" }}>
-				<TodosStatusToggle {...{ loadTodos, todos: filteredTodos }} />
-			</div>
+			<TodosStatusToggle {...{ loadTodos, todos: filteredTodos }} />
 			<AddTodo {...{ handleAddTodo }} />
-			<ol style={{ paddingLeft: "1.5rem" }}>
-				{filteredTodos.map((todo) => (
-					<li key={todo.id}>
-						<TodoItem {...{ todo, loadTodos }} />
-					</li>
-				))}
-			</ol>
-			<div style={{ marginBottom: "1rem" }}>
-				<TodosClearAllCompleted {...{ loadTodos, todos: filteredTodos }} />
-			</div>
+			<TodosList {...{ todos: filteredTodos, loadTodos }} />
+			<TodosClearAllCompleted {...{ loadTodos, todos: filteredTodos }} />
 			<ActiveTodosCounter todos={activeTodos.length} />
 			<TodosFilter {...{ filter, setFilter }} />
 			<TodosHint />
