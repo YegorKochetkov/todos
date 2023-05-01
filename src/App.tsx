@@ -3,7 +3,6 @@ import todosApi from "./api/todos.ts";
 import "./App.css";
 import ActiveTodosCounter from "./components/ActiveTodosCounter.tsx";
 import AddTodo from "./components/AddTodo";
-import TodoItem from "./components/TodoItem.tsx";
 import TodosClearAllCompleted from "./components/TodosClearAllCompleted.tsx";
 import TodosFilter from "./components/TodosFilter.tsx";
 import TodosHint from "./components/TodosHint.tsx";
