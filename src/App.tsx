@@ -35,7 +35,9 @@ function App() {
 			<AddTodo {...{ handleAddTodo }} />
 			<ol style={{ paddingLeft: "1.5rem" }}>
 				{filteredTodos.map((todo) => (
-					<TodoItem key={todo.id} {...{ todo, loadTodos }} />
+					<li key={todo.id}>
+						<TodoItem {...{ todo, loadTodos }} />
+					</li>
 				))}
 			</ol>
 			<div style={{ marginBottom: "1rem" }}>

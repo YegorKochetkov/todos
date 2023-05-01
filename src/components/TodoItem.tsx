@@ -75,19 +75,17 @@ function TodoItem({ todo, loadTodos }: TodoItemProps) {
 	}
 
 	return (
-		<li>
-			<form
-				name='todo'
-				onSubmit={(event) => handleSubmit(event)}
-				style={{ display: "flex", gap: "0.25rem", alignItems: "center" }}
-			>
-				<TodoTitle
-					{...{ isEditing, setIsEditing, isUpdating, handleTitleUpdate, todo }}
-				/>
-				<TodoComplete {...{ handleCompleteUpdate, todo }} />
-				<TodoRemove id={todo.id} {...{ handleRemove, isUpdating }} />
-			</form>
-		</li>
+		<form
+			name='todo'
+			onSubmit={(event) => handleSubmit(event)}
+			style={{ display: "flex", gap: "0.25rem", alignItems: "center" }}
+		>
+			<TodoTitle
+				{...{ isEditing, setIsEditing, isUpdating, handleTitleUpdate, todo }}
+			/>
+			<TodoComplete {...{ handleCompleteUpdate, todo }} />
+			<TodoRemove id={todo.id} {...{ handleRemove, isUpdating }} />
+		</form>
 	);
 }
 
