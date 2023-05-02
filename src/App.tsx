@@ -1,6 +1,6 @@
 import React from "react";
 import todosApi from "./api/todos.ts";
-import styles from "./App.module.scss";
+import "./App.scss";
 import ActiveTodosCounter from "./components/ActiveTodosCounter.tsx";
 import TodosClearAllCompleted from "./components/TodosClearAllCompleted.tsx";
 import TodosFilter from "./components/TodosFilter.tsx";
@@ -51,7 +51,7 @@ function App() {
 	return (
 		<main>
 			<TodosContext.Provider value={todosCtx}>
-				<article className={styles.todoApp}>
+				<article className='todoApp'>
 					<h1>Todos</h1>
 					<section>
 						<TodoHeader />
