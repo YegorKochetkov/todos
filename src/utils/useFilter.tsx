@@ -29,7 +29,7 @@ function useFilter(todos: Todo[]) {
 		setFilteredTodos(filteredTodos);
 	}, [filter, todos]);
 
-	return [filter, setFilter, filteredTodos, setFilteredTodos] as const;
+	return { filter, setFilter, filteredTodos, setFilteredTodos } as const;
 }
 
 export default useFilter;

@@ -23,7 +23,7 @@ export const TodosContext = React.createContext<TodosContextType | null>(null);
 
 function App() {
 	const [todos, setTodos] = React.useState<Todo[]>([]);
-	const [filter, setFilter, filteredTodos] = useFilter(todos);
+	const { filter, setFilter, filteredTodos } = useFilter(todos);
 	const activeTodos = todos.filter((todo) => !todo.completed).length;
 
 	function loadTodos() {
