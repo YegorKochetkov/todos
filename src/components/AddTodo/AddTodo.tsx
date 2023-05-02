@@ -19,7 +19,11 @@ function AddTodo() {
 	}
 
 	return (
-		<form onSubmit={(event) => handleSubmit(event)} name='add_todo'>
+		<form
+			onSubmit={(event) => handleSubmit(event)}
+			name='add_todo'
+			className={styles.newTodo}
+		>
 			<input
 				type='text'
 				name='title'
@@ -27,7 +31,6 @@ function AddTodo() {
 				placeholder='What needs to be done?'
 				value={title}
 				onChange={(event) => setTitle(event.target.value.trimStart())}
-				className={styles.newTodo}
 			/>
 			<button
 				type='submit'

@@ -1,19 +1,29 @@
 .newTodo {
 	position: relative;
 
-	margin: 0;
-	padding: 1rem;
+	& input {
+		margin: 0;
+		padding: 1rem 4rem;
 
-	width: 100%;
+		width: 100%;
 
-	font-size: 1.5rem;
-	font-family: inherit;
-	font-weight: inherit;
-	line-height: 1.4em;
+		font-size: 1.5rem;
+		font-family: inherit;
+		font-weight: inherit;
+		line-height: 1.4em;
 
-	color: inherit;
-	border: none;
+		color: inherit;
+		border: none;
 
-	background: rgba(0, 0, 0, 0.006);
-	box-shadow: var(--todoApp-shadow-inner);
+		background: rgba(0, 0, 0, 0.006);
+		box-shadow: var(--todoApp-shadow-inner);
+	}
+
+	& button {
+		position: absolute;
+		z-index: 10;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 1rem;
+	}
 }

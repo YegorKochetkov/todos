@@ -1,20 +1,11 @@
 .todoHeader {
 	position: relative;
 
-	& input {
-		padding-inline: 4rem;
-	}
-
-	& button {
+	& button:first-child {
 		position: absolute;
 		z-index: 10;
 		top: 50%;
 		left: 0.75rem;
 		transform: translateY(-50%);
-	}
-
-	& form > button {
-		left: inherit;
-		right: 1rem;
 	}
 }
