@@ -1,4 +1,6 @@
 import React from "react";
+import { BsCheck2All } from "react-icons/bs";
+import { GiSandsOfTime } from "react-icons/gi";
 import todosApi from "../api/todos.ts";
 import { TodosContext, TodosContextType } from "../App.tsx";
 import { Todo } from "../types/todo.type.ts";
@@ -37,7 +39,11 @@ function TodosStatusToggle() {
 			name='toggle status'
 			type='button'
 		>
-			{isUpdating ? "⌛" : "✔️"}
+			{isUpdating ? (
+				<GiSandsOfTime className='icon' />
+			) : (
+				<BsCheck2All className='icon' />
+			)}
 		</button>
 	);
 }

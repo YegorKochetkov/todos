@@ -1,4 +1,6 @@
 import React from "react";
+import { BsPlusCircle } from "react-icons/bs";
+import { GiSandsOfTime } from "react-icons/gi";
 import { TodosContext, TodosContextType } from "../../App";
 import styles from "./AddTodo.module.scss";
 
@@ -30,11 +32,15 @@ function AddTodo() {
 			<button
 				type='submit'
 				disabled={isAdding}
-				hidden={!title}
 				name='add todo'
 				title='Add todo'
+				className={`${!title ? "hidden" : ""}`}
 			>
-				{isAdding ? "⌛" : "➕"}
+				{isAdding ? (
+					<GiSandsOfTime className='icon' />
+				) : (
+					<BsPlusCircle className='icon' />
+				)}
 			</button>
 		</form>
 	);

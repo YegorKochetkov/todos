@@ -60,6 +60,7 @@
 
 	& button:disabled {
 		cursor: inherit;
+		pointer-events: none;
 	}
 
 	& button:active {
@@ -71,4 +72,8 @@
 .icon {
 	width: 1.5rem;
 	height: 1.5rem;
+}
+
+.hidden {
+	visibility: hidden;
 }
