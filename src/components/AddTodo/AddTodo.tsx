@@ -37,12 +37,12 @@ function AddTodo() {
 				disabled={isAdding}
 				name='add todo'
 				title='Add todo'
-				className={`${!title ? "hidden" : ""}`}
+				className={!title ? styles.hidden : ""}
 			>
 				{isAdding ? (
-					<GiSandsOfTime className='icon' />
+					<GiSandsOfTime className={styles.icon} />
 				) : (
-					<BsPlusCircle className='icon' />
+					<BsPlusCircle className={styles.icon} />
 				)}
 			</button>
 		</form>

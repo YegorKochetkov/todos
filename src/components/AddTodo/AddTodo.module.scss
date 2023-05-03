@@ -1,9 +1,12 @@
+@use "../../styles/extends.scss";
+
 .newTodo {
 	position: relative;
 
 	& input {
 		margin: 0;
-		padding: 1rem 4rem;
+		padding: 1rem;
+		padding-right: 4rem;
 
 		width: 100%;
 
@@ -17,13 +20,29 @@
 
 		background: rgba(0, 0, 0, 0.006);
 		box-shadow: var(--todoApp-shadow-inner);
+
+		&::placeholder {
+			font-style: italic;
+			color: var(--todoApp-text-color);
+			opacity: 0.35;
+		}
 	}
 
 	& button {
+		@extend %btn;
+
 		position: absolute;
 		z-index: 10;
 		top: 50%;
 		transform: translateY(-50%);
 		right: 1rem;
 	}
+}
+
+.hidden {
+	@extend %hidden;
+}
+
+.icon {
+	@extend %icon;
 }
