@@ -8,5 +8,12 @@
 
 	&:hover {
 		background-color: transparent;
+		text-decoration: underline;
+		color: var(--todoApp-color);
+	}
+
+	&:focus {
+		outline: none;
+		color: var(--todoApp-red);
 	}
 }

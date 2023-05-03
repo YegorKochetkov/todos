@@ -6,7 +6,7 @@
 
 	list-style: none;
 
-	& li:not(:last-child) {
+	& li {
 		border-bottom: 1px solid var(--text-color2);
 	}
 }
