@@ -1,6 +1,6 @@
 import ActiveTodosCounter from "../../components/ActiveTodosCounter";
+import TodosFilter from "../../components/TodoFilter/TodosFilter";
 import TodosClearAllCompleted from "../../components/TodosClearAllCompleted/TodosClearAllCompleted";
-import TodosFilter from "../../components/TodosFilter";
 import styles from "./TodoFooter.module.scss";
 
 function TodoFooter() {
