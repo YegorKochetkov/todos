@@ -1,0 +1,24 @@
+.todo {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+
+	& button {
+		opacity: 0;
+		transition: opacity 0.3s;
+
+		position: absolute;
+		right: 1rem;
+	}
+
+	& label:first-child {
+		position: absolute;
+		left: 1rem;
+	}
+
+	&:hover button,
+	&:focus-within button {
+		opacity: 1;
+	}
+}

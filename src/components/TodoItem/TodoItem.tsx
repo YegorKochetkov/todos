@@ -1,9 +1,22 @@
 import React from "react";
-import todosApi from "../api/todos.ts";
-import TodoComplete from "./TodoComplete.tsx";
-import TodoRemove from "./TodoRemove.tsx";
-import TodoTitle from "./TodoTitle.tsx";
-import { type Todo } from "../types/todo.type";
+import todosApi from "../../api/todos.ts";
+import TodoComplete from "./TodoComplete/TodoComplete.tsx";
+import styles from "./TodoItem.module.scss";
+import TodoRemove from "./TodoRemove/TodoRemove.tsx";
+import TodoTitle from "./TodoTitle/TodoTitle.tsx";
+import { type Todo } from "../../types/todo.type.ts";
+
+export type TodoContextType = {
+	todo: Todo;
+	isUpdating: boolean;
+	isEditing: boolean;
+	setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
+	handleTitleUpdate: (title: string) => Promise<void>;
+	handleRemove: (todoId: string) => Promise<void>;
+	handleCompleteUpdate: (completed: boolean) => Promise<void>;
+};
+
+export const TodoContext = React.createContext<TodoContextType | null>(null);
 
 type TodoItemProps = {
 	todo: Todo;
@@ -74,18 +87,28 @@ function TodoItem({ todo, loadTodos }: TodoItemProps) {
 		setIsUpdating(false);
 	}
 
+	const todoCtx = {
+		handleCompleteUpdate,
+		todo,
+		isEditing,
+		setIsEditing,
+		isUpdating,
+		handleTitleUpdate,
+		handleRemove,
+	};
+
 	return (
-		<form
-			name='todo'
-			onSubmit={(event) => handleSubmit(event)}
-			style={{ display: "flex", gap: "0.25rem", alignItems: "center" }}
-		>
-			<TodoTitle
-				{...{ isEditing, setIsEditing, isUpdating, handleTitleUpdate, todo }}
-			/>
-			<TodoComplete {...{ handleCompleteUpdate, todo }} />
-			<TodoRemove id={todo.id} {...{ handleRemove, isUpdating }} />
-		</form>
+		<TodoContext.Provider value={todoCtx}>
+			<form
+				name='todo'
+				onSubmit={(event) => handleSubmit(event)}
+				className={styles.todo}
+			>
+				<TodoComplete />
+				<TodoTitle />
+				<TodoRemove />
+			</form>
+		</TodoContext.Provider>
 	);
 }
 
