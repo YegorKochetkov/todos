@@ -1,6 +1,6 @@
 import React from "react";
 import { TodosContext, TodosContextType } from "../App";
-import { Filters } from "../utils/useFilter";
+import { Filters } from "../hooks/useFilter";
 
 function TodosFilter() {
 	const { filter, setFilter } = React.useContext(
