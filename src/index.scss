@@ -40,10 +40,12 @@ body {
 	font-size: 1rem;
 	font-weight: 300;
 
+	text-align: center;
+
 	background-color: var(--background-color);
 	color: var(--text-color);
 
-	min-width: 14rem;
 	max-width: 45rem;
 	margin: 0 auto;
+	padding-inline: clamp(1rem, 6%, 2.5rem);
 }
