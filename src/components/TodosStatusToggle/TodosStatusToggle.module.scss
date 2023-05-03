@@ -1,0 +1,9 @@
+@use "../../styles/extends.scss";
+
+.toggle {
+	@extend %btn;
+}
+
+.icon {
+	@extend %icon;
+}
