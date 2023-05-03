@@ -1,0 +1,23 @@
+@use "../../styles/extends.scss";
+@use "../../styles/variables.scss";
+
+.filter {
+	display: flex;
+
+	border: none;
+	margin: 0;
+	padding: 0;
+
+	& label {
+		@extend %link;
+
+		&:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+	}
+}
+
+.selected {
+	text-decoration: underline;
+}

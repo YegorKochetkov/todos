@@ -1,7 +1,8 @@
 import React from "react";
-import { TodosContext, TodosContextType } from "../App";
-import { Filters } from "../hooks/useFilter";
-import { Keys } from "../utils/keys";
+import { TodosContext, TodosContextType } from "../../App";
+import { Filters } from "../../hooks/useFilter";
+import { Keys } from "../../utils/keys";
+import styles from "./TodoFilter.module.scss";
 
 function TodosFilter() {
 	const { filter, setFilter } = React.useContext(
@@ -16,23 +17,12 @@ function TodosFilter() {
 	}
 
 	return (
-		// TODO: add in css class outline to label when focused
-		<fieldset style={{ border: "none" }}>
+		<fieldset className={styles.filter}>
 			<label
 				htmlFor='all'
-				style={{
-					border: `${
-						filter === Filters.all
-							? "1px solid lightgrey"
-							: "1px solid transparent"
-					}`,
-					padding: "0.25rem 0.5rem",
-					textAlign: "center",
-					position: "relative",
-					marginRight: "0.5rem",
-				}}
 				tabIndex={0}
 				onKeyDown={(event) => handleFilter(event)}
+				className={filter === Filters.all ? styles.selected : ""}
 			>
 				<input
 					type='radio'
@@ -41,26 +31,15 @@ function TodosFilter() {
 					value='all'
 					checked={filter === Filters.all}
 					onChange={() => setFilter(Filters.all)}
-					style={{ position: "absolute", opacity: "0", left: "-0.75rem" }}
 					hidden
 				/>
-				all
+				All
 			</label>
 			<label
 				htmlFor='completed'
-				style={{
-					border: `${
-						filter === Filters.completed
-							? "1px solid lightgrey"
-							: "1px solid transparent"
-					}`,
-					padding: "0.25rem 0.5rem",
-					textAlign: "center",
-					position: "relative",
-					marginRight: "0.5rem",
-				}}
 				tabIndex={0}
 				onKeyDown={(event) => handleFilter(event)}
+				className={filter === Filters.completed ? styles.selected : ""}
 			>
 				<input
 					type='radio'
@@ -69,26 +48,15 @@ function TodosFilter() {
 					value='completed'
 					checked={filter === Filters.completed}
 					onChange={() => setFilter(Filters.completed)}
-					style={{ position: "absolute", opacity: "0", left: "-0.75rem" }}
 					hidden
 				/>
-				completed
+				Completed
 			</label>
 			<label
 				htmlFor='active'
-				style={{
-					border: `${
-						filter === Filters.active
-							? "1px solid lightgrey"
-							: "1px solid transparent"
-					}`,
-					padding: "0.25rem 0.5rem",
-					textAlign: "center",
-					position: "relative",
-					marginRight: "0.5rem",
-				}}
 				tabIndex={0}
 				onKeyDown={(event) => handleFilter(event)}
+				className={filter === Filters.active ? styles.selected : ""}
 			>
 				<input
 					type='radio'
@@ -97,10 +65,9 @@ function TodosFilter() {
 					value='active'
 					checked={filter === Filters.active}
 					onChange={() => setFilter(Filters.active)}
-					style={{ position: "absolute", opacity: "0", left: "-0.75rem" }}
 					hidden
 				/>
-				active
+				Active
 			</label>
 		</fieldset>
 	);
