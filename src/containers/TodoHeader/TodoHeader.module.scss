@@ -1,6 +1,10 @@
 .todoHeader {
 	position: relative;
 
+	& input {
+		padding-left: 4rem;
+	}
+
 	& button:first-child {
 		position: absolute;
 		z-index: 10;

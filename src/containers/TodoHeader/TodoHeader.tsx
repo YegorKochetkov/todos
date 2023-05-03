@@ -1,5 +1,5 @@
 import AddTodo from "../../components/AddTodo/AddTodo";
-import TodosStatusToggle from "../../components/TodosStatusToggle";
+import TodosStatusToggle from "../../components/TodosStatusToggle/TodosStatusToggle";
 import styles from "./TodoHeader.module.scss";
 
 function TodoHeader() {
