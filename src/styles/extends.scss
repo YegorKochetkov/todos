@@ -37,6 +37,24 @@
 	}
 }
 
+%link {
+	@extend %btn;
+
+	min-width: fit-content;
+	border-radius: 0;
+
+	&:hover {
+		background-color: transparent;
+		text-decoration: underline;
+		color: var(--todoApp-color);
+	}
+
+	&:focus {
+		outline: none;
+		color: var(--todoApp-red);
+	}
+}
+
 %icon {
 	width: 1.5rem;
 	height: 1.5rem;
