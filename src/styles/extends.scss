@@ -1,0 +1,48 @@
+%btn {
+	margin: 0;
+	width: min-content;
+	padding: 0.5rem;
+
+	appearance: none;
+	border: 0;
+	border-radius: 100%;
+
+	background: none;
+	color: inherit;
+	vertical-align: baseline;
+
+	font-family: inherit;
+	font-weight: inherit;
+	font-size: 100%;
+
+	display: grid;
+	place-content: center;
+
+	transition: all 0.3s;
+
+	&:hover {
+		cursor: pointer;
+		color: var(--todoApp-red-darkTheme);
+		background-color: var(--text-color2);
+	}
+
+	&:disabled {
+		cursor: inherit;
+		pointer-events: none;
+	}
+
+	&:active {
+		outline: none;
+		box-shadow: var(--todoApp-shadow-inner);
+	}
+}
+
+%icon {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+%hidden {
+	visibility: hidden;
+	display: none;
+}

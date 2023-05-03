@@ -1,0 +1,24 @@
+* {
+	--background-color-lightTheme: #f5f5f5;
+	--text-color-lightTheme: #7e7e7e;
+	--text-color2-lightTheme: #dcdcdc;
+	--todoApp-background-lightTheme: #fff;
+	--todoApp-text-color-lightTheme: #8e8e8e;
+	--todoApp-red-lightTheme: #af2f2f;
+	--todoApp-green-lightTheme: #018706;
+	--todoApp-shadow-lightTheme: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+		0 25px 50px 0 rgba(0, 0, 0, 0.1);
+	--todoApp-shadow-inner-lightTheme: inset 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+	--todoApp-shadow-inner-sm-lightTheme: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+
+	--background-color-darkTheme: #242528;
+	--text-color-darkTheme: #e2e3e9;
+	--text-color2-darkTheme: #444444;
+	--todoApp-red-darkTheme: #af2f2f;
+	--todoApp-green-darkTheme: #0fa214;
+	--todoApp-background-darkTheme: #4d4d4d;
+	--todoApp-shadow-darkTheme: 0 2px 4px 0 rgba(0, 0, 0, 0.8),
+		0 25px 50px 0 rgba(0, 0, 0, 0.9);
+	--todoApp-shadow-inner-darkTheme: inset 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+	--todoApp-shadow-inner-sm-darkTheme: inset 0 -2px 1px rgba(0, 0, 0, 0.3);
+}
