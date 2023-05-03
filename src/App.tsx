@@ -1,11 +1,9 @@
 import React from "react";
 import todosApi from "./api/todos.ts";
 import "./App.scss";
-import ActiveTodosCounter from "./components/ActiveTodosCounter.tsx";
 import TodosList from "./components/TodoList/TodosList.tsx";
-import TodosClearAllCompleted from "./components/TodosClearAllCompleted.tsx";
-import TodosFilter from "./components/TodosFilter.tsx";
 import TodosHint from "./components/TodosHint.tsx";
+import TodoFooter from "./containers/TodoFooter/TodoFooter.tsx";
 import TodoHeader from "./containers/TodoHeader/TodoHeader.tsx";
 import useFilter, { Filters } from "./hooks/useFilter.tsx";
 import { type Todo } from "./types/todo.type";
@@ -56,9 +54,7 @@ function App() {
 					<section>
 						<TodoHeader />
 						<TodosList />
-						<ActiveTodosCounter />
-						<TodosFilter />
-						<TodosClearAllCompleted />
+						<TodoFooter />
 					</section>
 				</article>
 			</TodosContext.Provider>
