@@ -1,0 +1,12 @@
+@use "../../styles/extends.scss";
+
+.clearAll {
+	@extend %btn;
+
+	min-width: fit-content;
+	border-radius: 0;
+
+	&:hover {
+		background-color: transparent;
+	}
+}

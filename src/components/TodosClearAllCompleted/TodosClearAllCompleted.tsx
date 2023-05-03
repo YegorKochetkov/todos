@@ -1,6 +1,7 @@
 import React from "react";
-import todosApi from "../api/todos.ts";
-import { TodosContext, TodosContextType } from "../App.tsx";
+import todosApi from "../../api/todos.ts";
+import { TodosContext, TodosContextType } from "../../App.tsx";
+import styles from "./TodosClearAllCompleted.module.scss";
 
 function TodosClearAllCompleted() {
 	const [isUpdating, setIsUpdating] = React.useState(false);
@@ -24,7 +25,12 @@ function TodosClearAllCompleted() {
 	}
 
 	return (
-		<button onClick={clearAll}>
+		<button
+			onClick={clearAll}
+			type='button'
+			name='clear all'
+			className={styles.clearAll}
+		>
 			{isUpdating ? "Wait..." : "Clear all completed"}
 		</button>
 	);

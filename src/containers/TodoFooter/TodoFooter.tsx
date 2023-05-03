@@ -1,5 +1,5 @@
 import ActiveTodosCounter from "../../components/ActiveTodosCounter";
-import TodosClearAllCompleted from "../../components/TodosClearAllCompleted";
+import TodosClearAllCompleted from "../../components/TodosClearAllCompleted/TodosClearAllCompleted";
 import TodosFilter from "../../components/TodosFilter";
 import styles from "./TodoFooter.module.scss";
 
