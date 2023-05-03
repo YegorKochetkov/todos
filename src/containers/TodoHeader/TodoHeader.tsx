@@ -4,10 +4,10 @@ import styles from "./TodoHeader.module.scss";
 
 function TodoHeader() {
 	return (
-		<div className={styles.todoHeader}>
+		<header className={styles.todoHeader}>
 			<TodosStatusToggle />
 			<AddTodo />
-		</div>
+		</header>
 	);
 }
 
