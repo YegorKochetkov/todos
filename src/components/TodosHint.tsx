@@ -1,11 +1,15 @@
+import React from "react";
+
 function TodosHint() {
 	return (
-		<p>
-			<b>Tab</b>, <b>Enter</b>, <b>Space</b>, <b>Delete</b> or{" "}
-			<b>Double-click</b> to manage todos
-			<br />
-			<b>Arrow</b> keys to switch filters
-		</p>
+		<React.Fragment>
+			<p>
+				<b>Tab</b>, <b>Enter</b>, <b>Space</b>, <b>Delete</b> to manage todos
+			</p>
+			<p>
+				<b>Double-click</b> to edit a todo
+			</p>
+		</React.Fragment>
 	);
 }
 
