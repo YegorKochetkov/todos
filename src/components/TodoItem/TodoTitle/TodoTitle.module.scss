@@ -1,0 +1,32 @@
+.todoInput,
+.todoLabel {
+	margin: 0;
+	margin-left: 4rem;
+	padding-block: 1rem;
+
+	width: 100%;
+
+	font-size: 1.5rem;
+	font-family: inherit;
+	font-weight: inherit;
+	line-height: 1.4em;
+
+	color: inherit;
+	border: 1px solid transparent;
+
+	box-shadow: var(--todoApp-shadow-inner);
+}
+
+.todoInput {
+	outline: none;
+	border-color: var(--background-color-darkTheme);
+}
+
+.todoLabel {
+	padding-right: 4rem;
+	box-shadow: none;
+
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
