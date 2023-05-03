@@ -1,0 +1,13 @@
+@use "../../../styles/extends.scss";
+
+.remove {
+	@extend %btn;
+}
+
+.icon {
+	@extend %icon;
+}
+
+.hidden {
+	@extend %hidden;
+}
