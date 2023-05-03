@@ -1,7 +1,8 @@
 function TodosHint() {
 	return (
 		<p>
-			<b>Enter</b>, <b>Space</b> or <b>Double-click</b> to edit a todo
+			<b>Tab</b>, <b>Enter</b>, <b>Space</b>, <b>Delete</b> or{" "}
+			<b>Double-click</b> to manage todos
 			<br />
 			<b>Arrow</b> keys to switch filters
 		</p>
