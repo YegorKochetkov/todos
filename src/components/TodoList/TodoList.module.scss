@@ -1,0 +1,12 @@
+.todoList {
+	position: relative;
+
+	margin: 0;
+	padding: 0;
+
+	list-style: none;
+
+	& li:not(:last-child) {
+		border-bottom: 1px solid var(--text-color2);
+	}
+}
