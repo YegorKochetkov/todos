@@ -7,16 +7,16 @@ import TodosClearAllCompleted from "./components/TodosClearAllCompleted.tsx";
 import TodosFilter from "./components/TodosFilter.tsx";
 import TodosHint from "./components/TodosHint.tsx";
 import TodoHeader from "./containers/TodoHeader/TodoHeader.tsx";
-import useFilter, { Filters } from "./utils/useFilter.tsx";
+import useFilter, { Filters } from "./hooks/useFilter.tsx";
 import { type Todo } from "./types/todo.type";
 
 export type TodosContextType = {
+	activeTodos: number;
 	filteredTodos: Todo[];
-	loadTodos: () => Promise<void>;
-	handleAddTodo: (title: string) => Promise<void>;
 	filter: Filters;
 	setFilter: React.Dispatch<React.SetStateAction<Filters>>;
-	activeTodos: number;
+	loadTodos: () => Promise<void>;
+	handleAddTodo: (title: string) => Promise<void>;
 };
 
 export const TodosContext = React.createContext<TodosContextType | null>(null);
@@ -56,13 +56,13 @@ function App() {
 					<section>
 						<TodoHeader />
 						<TodosList />
-						<TodosClearAllCompleted />
 						<ActiveTodosCounter />
 						<TodosFilter />
-						<TodosHint />
+						<TodosClearAllCompleted />
 					</section>
 				</article>
 			</TodosContext.Provider>
+			<TodosHint />
 		</main>
 	);
 }
