@@ -1,5 +1,6 @@
 import React from "react";
 import todosApi from "../../api/todos.ts";
+import { TodosContext, TodosContextType } from "../../App.tsx";
 import TodoComplete from "./TodoComplete/TodoComplete.tsx";
 import styles from "./TodoItem.module.scss";
 import TodoRemove from "./TodoRemove/TodoRemove.tsx";
@@ -20,10 +21,11 @@ export const TodoContext = React.createContext<TodoContextType | null>(null);
 
 type TodoItemProps = {
 	todo: Todo;
-	loadTodos: () => Promise<void>;
 };
 
-function TodoItem({ todo, loadTodos }: TodoItemProps) {
+function TodoItem({ todo }: TodoItemProps) {
+	const { loadTodos } = React.useContext(TodosContext) as TodosContextType;
+
 	const [isUpdating, setIsUpdating] = React.useState(false);
 	const [isEditing, setIsEditing] = React.useState(false);
 

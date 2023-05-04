@@ -4,7 +4,7 @@ import TodoItem from "../TodoItem/TodoItem";
 import styles from "./TodoList.module.scss";
 
 function TodosList() {
-	const { filteredTodos: todos, loadTodos } = React.useContext(
+	const { filteredTodos: todos } = React.useContext(
 		TodosContext
 	) as TodosContextType;
 
@@ -12,7 +12,7 @@ function TodosList() {
 		<ul className={styles.todoList}>
 			{todos.map((todo) => (
 				<li key={todo.id}>
-					<TodoItem {...{ todo, loadTodos }} />
+					<TodoItem {...{ todo }} />
 				</li>
 			))}
 		</ul>
