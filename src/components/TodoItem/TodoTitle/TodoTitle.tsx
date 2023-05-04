@@ -32,6 +32,8 @@ function TodoTitle() {
 		titleInput.current?.focus();
 	}, [isEditing]);
 
+	const id = React.useId();
+
 	return (
 		<React.Fragment>
 			<label
@@ -55,7 +57,7 @@ function TodoTitle() {
 			<input
 				type='text'
 				name={"todo"}
-				id='todo_title'
+				id={`todo_title-${id}`}
 				onBlur={handleBlur}
 				onKeyDown={(event) => handleKeyDown(event)}
 				onChange={(event) => setTitle(event.target.value.trimStart())}
