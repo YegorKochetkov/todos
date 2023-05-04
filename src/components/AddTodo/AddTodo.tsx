@@ -18,6 +18,23 @@ function AddTodo() {
 		setTitle("");
 	}
 
+	const addInput = React.useRef<HTMLInputElement>(null);
+
+	function handleKeyDown(event: KeyboardEvent) {
+		const metaKeys = event.ctrlKey && event.shiftKey;
+
+		if (event.key === "F" && metaKeys) {
+			addInput.current?.focus();
+		}
+	}
+
+	React.useEffect(() => {
+		document.body.addEventListener("keydown", handleKeyDown);
+		return () => {
+			document.body.removeEventListener("keydown", handleKeyDown);
+		};
+	}, []);
+
 	return (
 		<form
 			onSubmit={(event) => handleSubmit(event)}
@@ -31,6 +48,8 @@ function AddTodo() {
 				placeholder='What needs to be done?'
 				value={title}
 				onChange={(event) => setTitle(event.target.value.trimStart())}
+				ref={addInput}
+				autoFocus
 			/>
 			<button
 				type='submit'
