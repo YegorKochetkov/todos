@@ -17,7 +17,7 @@ function TodosFilter() {
 	}
 
 	return (
-		<fieldset className={styles.filter}>
+		<fieldset className={styles.filter} name='filters'>
 			<label
 				htmlFor='all'
 				tabIndex={0}
