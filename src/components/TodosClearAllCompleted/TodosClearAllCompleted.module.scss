@@ -2,4 +2,8 @@
 
 .clearAll {
 	@extend %link;
+
+	&:disabled {
+		opacity: 0.5;
+	}
 }

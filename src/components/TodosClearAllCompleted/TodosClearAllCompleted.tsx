@@ -1,13 +1,16 @@
 import React from "react";
 import todosApi from "../../api/todos.ts";
 import { TodosContext, TodosContextType } from "../../App.tsx";
+import { Filters } from "../../hooks/useFilter.tsx";
 import styles from "./TodosClearAllCompleted.module.scss";
 
 function TodosClearAllCompleted() {
 	const [isUpdating, setIsUpdating] = React.useState(false);
-	const { filteredTodos: todos, loadTodos } = React.useContext(
-		TodosContext
-	) as TodosContextType;
+	const {
+		filteredTodos: todos,
+		loadTodos,
+		filter,
+	} = React.useContext(TodosContext) as TodosContextType;
 
 	function clearAll() {
 		setIsUpdating(true);
@@ -30,6 +33,7 @@ function TodosClearAllCompleted() {
 			type='button'
 			name='clear all'
 			className={styles.clearAll}
+			disabled={filter === Filters.active}
 		>
 			{isUpdating ? "Wait..." : "Clear all completed"}
 		</button>
