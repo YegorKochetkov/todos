@@ -2,6 +2,7 @@ import React from "react";
 import { BsPlusCircle } from "react-icons/bs";
 import { GiSandsOfTime } from "react-icons/gi";
 import { TodosContext, TodosContextType } from "../../App";
+import { Keys } from "../../utils/keys";
 import styles from "./AddTodo.module.scss";
 
 function AddTodo() {
@@ -23,7 +24,7 @@ function AddTodo() {
 	function handleKeyDown(event: KeyboardEvent) {
 		const metaKeys = event.ctrlKey && event.shiftKey;
 
-		if (event.key === "F" && metaKeys) {
+		if (event.key === Keys.focus && metaKeys) {
 			addInput.current?.focus();
 		}
 	}

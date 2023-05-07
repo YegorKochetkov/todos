@@ -3,4 +3,5 @@ export enum Keys {
   space = " ",
   delete = "Delete",
   escape = "Escape",
+  focus = "F",
 }
