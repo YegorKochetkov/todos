@@ -19,10 +19,16 @@ function TodosStatusToggle() {
 
 		setIsUpdating(true);
 
-		const updatedTodos: Todo[] = todos.map((todo) => ({
-			...todo,
-			completed: !todo.completed,
-		}));
+		let updatedTodos: Todo[] = todos
+			.filter((todo) => todo.completed === false)
+			.map((todo) => ({ ...todo, completed: true }));
+
+		if (updatedTodos.length === 0) {
+			updatedTodos = todos.map((todo) => ({
+				...todo,
+				completed: false,
+			}));
+		}
 
 		todosApi
 			.updateAll(updatedTodos)
