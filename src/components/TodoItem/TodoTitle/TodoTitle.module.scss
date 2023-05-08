@@ -32,3 +32,10 @@
 
 	cursor: pointer;
 }
+
+.todoLabelCompleted {
+	@extend .todoLabel;
+
+	text-decoration: line-through;
+	opacity: 0.6;
+}

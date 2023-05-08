@@ -48,7 +48,9 @@ function TodoTitle() {
 					event.key === Keys.delete && handleRemove(todo.id)
 				}
 				tabIndex={0}
-				className={styles.todoLabel}
+				className={
+					todo.completed ? styles.todoLabelCompleted : styles.todoLabel
+				}
 				hidden={isEditing}
 				title={todo.title}
 			>
