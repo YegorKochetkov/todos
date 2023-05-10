@@ -1,11 +1,11 @@
 import React from "react";
-import todosApi from "./api/todos.ts";
 import "./App.scss";
 import TodosList from "./components/TodoList/TodosList.tsx";
 import TodosHint from "./components/TodosHint.tsx";
 import TodoFooter from "./containers/TodoFooter/TodoFooter.tsx";
 import TodoHeader from "./containers/TodoHeader/TodoHeader.tsx";
 import useFilter, { Filters } from "./hooks/useFilter.tsx";
+import useTodos from "./hooks/useTodos.tsx";
 import { type Todo } from "./types/todo.type";
 
 export type TodosContextType = {
@@ -20,22 +20,8 @@ export type TodosContextType = {
 export const TodosContext = React.createContext<TodosContextType | null>(null);
 
 function App() {
-	const [todos, setTodos] = React.useState<Todo[]>([]);
-	const { filter, setFilter, filteredTodos } = useFilter(todos);
-	const activeTodos = todos.filter((todo) => !todo.completed).length;
-
-	function loadTodos() {
-		return todosApi.getAll().then(setTodos);
-	}
-
-	async function handleAddTodo(title: string) {
-		const newTodo = await todosApi.add(title);
-		setTodos([...todos, newTodo]);
-	}
-
-	React.useEffect(() => {
-		loadTodos();
-	}, []);
+	const { todos, handleAddTodo, loadTodos, activeTodos } = useTodos();
+	const { filteredTodos, filter, setFilter } = useFilter(todos);
 
 	const todosCtx = {
 		handleAddTodo,
