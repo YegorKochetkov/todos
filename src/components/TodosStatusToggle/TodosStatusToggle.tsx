@@ -41,7 +41,7 @@ function TodosStatusToggle() {
 	return (
 		<button
 			onClick={toggleAll}
-			disabled={isUpdating}
+			disabled={isUpdating || todos.length === 0}
 			title='Toggle all todos status'
 			name='toggle status'
 			type='button'
