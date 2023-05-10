@@ -6,13 +6,20 @@ function useTodos() {
 	const [todos, setTodos] = React.useState<Todo[]>([]);
 	const activeTodos = todos.filter((todo) => !todo.completed).length;
 
-	function loadTodos() {
-		return todosApi.getAll().then(setTodos);
+	async function loadTodos() {
+		const todos = await todosApi.getAll();
+
+		if (todos) {
+			setTodos(todos);
+		}
 	}
 
 	async function handleAddTodo(title: string) {
 		const newTodo = await todosApi.add(title);
-		setTodos([...todos, newTodo]);
+
+		if (newTodo) {
+			setTodos([...todos, newTodo]);
+		}
 	}
 
 	React.useEffect(() => {

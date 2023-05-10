@@ -12,7 +12,7 @@ function TodosStatusToggle() {
 		TodosContext
 	) as TodosContextType;
 
-	function toggleAll() {
+	async function toggleAll() {
 		if (todos.length === 0) {
 			return;
 		}
@@ -30,12 +30,9 @@ function TodosStatusToggle() {
 			}));
 		}
 
-		todosApi
-			.updateAll(updatedTodos)
-			.then(loadTodos)
-			.finally(() => {
-				setIsUpdating(false);
-			});
+		await todosApi.updateAll(updatedTodos);
+		await loadTodos();
+		setIsUpdating(false);
 	}
 
 	return (

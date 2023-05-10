@@ -20,53 +20,71 @@ function handleError(error: any) {
   }
 }
 
-export function getAll(): Promise<Todo[]> {
-  return axios
-    .get("/todos")
-    .then((res) => res.data)
-    .catch(handleError);
+export async function getAll(): Promise<Todo[] | void> {
+  try {
+    const res = await axios.get("/todos");
+    return res.data;
+  } catch (error) {
+    handleError(error);
+  }
 }
 
-export function updateAll(todos: Todo[]): Promise<void> {
-  return axios
-    .patch("/todos?action=update", { items: todos })
-    .then((res) => res.data)
-    .catch(handleError);
+export async function updateAll(todos: Todo[]): Promise<void> {
+  try {
+    const res = await axios.patch("/todos?action=update", { items: todos });
+    return res.data;
+  } catch (error) {
+    handleError(error);
+  }
 }
 
-export function deleteAll(ids: string[]): Promise<void> {
-  return axios
-    .patch("/todos?action=delete", { ids })
-    .then((res) => res.data)
-    .catch(handleError);
+export async function deleteAll(ids: string[]): Promise<void> {
+  try {
+    const res = await axios.patch("/todos?action=delete", { ids });
+    return res.data;
+  } catch (error) {
+    handleError(error);
+  }
 }
 
-export function getOne(todoId: string): Promise<Todo> {
-  return axios
-    .get(`/todos/${todoId}`)
-    .then((res) => res.data)
-    .catch(handleError);
+export async function getOne(todoId: string): Promise<Todo | void> {
+  try {
+    const res = await axios.get(`/todos/${todoId}`);
+    return res.data;
+  } catch (error) {
+    handleError(error);
+  }
 }
 
-export function add(title: FormDataEntryValue): Promise<Todo> {
-  return axios
-    .post("/todos", { title })
-    .then((res) => res.data)
-    .catch(handleError);
+export async function add(title: FormDataEntryValue): Promise<Todo | void> {
+  try {
+    const res = await axios.post("/todos", { title });
+    return res.data;
+  } catch (error) {
+    handleError(error);
+  }
 }
 
-export function remove(todoId: string): Promise<string> {
-  return axios
-    .delete(`/todos/${todoId}`)
-    .then((res) => res.data)
-    .catch(handleError);
+export async function remove(todoId: string): Promise<string | void> {
+  try {
+    const res = await axios.delete(`/todos/${todoId}`);
+    return res.data;
+  } catch (error) {
+    handleError(error);
+  }
 }
 
-export function update({ id, title, completed }: Todo): Promise<Todo> {
-  return axios
-    .put(`/todos/${id}`, { title, completed })
-    .then((res) => res.data)
-    .catch(handleError);
+export async function update({
+  id,
+  title,
+  completed,
+}: Todo): Promise<Todo | void> {
+  try {
+    const res = await axios.put(`/todos/${id}`, { title, completed });
+    return res.data;
+  } catch (error) {
+    handleError(error);
+  }
 }
 
 const todosApi = { update, updateAll, deleteAll, getAll, getOne, add, remove };

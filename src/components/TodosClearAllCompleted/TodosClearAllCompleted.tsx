@@ -12,7 +12,7 @@ function TodosClearAllCompleted() {
 		filter,
 	} = React.useContext(TodosContext) as TodosContextType;
 
-	function clearAll() {
+	async function clearAll() {
 		setIsUpdating(true);
 		const filteredTodos = todos.filter((todo) => todo.completed === true);
 
@@ -21,10 +21,9 @@ function TodosClearAllCompleted() {
 			return;
 		}
 
-		todosApi
-			.deleteAll(filteredTodos.map((todo) => todo.id))
-			.then(loadTodos)
-			.finally(() => setIsUpdating(false));
+		await todosApi.deleteAll(filteredTodos.map((todo) => todo.id));
+		await loadTodos();
+		setIsUpdating(false);
 	}
 
 	return (
