@@ -11,10 +11,10 @@ function TodosClearAllCompleted() {
 		loadTodos,
 		filter,
 	} = React.useContext(TodosContext) as TodosContextType;
+	const filteredTodos = todos.filter((todo) => todo.completed === true);
 
 	async function clearAll() {
 		setIsUpdating(true);
-		const filteredTodos = todos.filter((todo) => todo.completed === true);
 
 		if (filteredTodos.length === 0) {
 			setIsUpdating(false);
@@ -32,7 +32,7 @@ function TodosClearAllCompleted() {
 			type='button'
 			name='clear all'
 			className={styles.clearAll}
-			disabled={filter === Filters.active}
+			disabled={filter === Filters.active || filteredTodos.length === 0}
 		>
 			{isUpdating ? "Wait..." : "Clear all completed"}
 		</button>
