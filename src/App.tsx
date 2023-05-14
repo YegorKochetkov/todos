@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.scss";
 import TodosList from "./components/TodoList/TodosList.tsx";
-import TodosHint from "./components/TodosHint.tsx";
+import TodosHint from "./components/TodosHint/TodosHint.tsx";
 import TodoFooter from "./containers/TodoFooter/TodoFooter.tsx";
 import TodoHeader from "./containers/TodoHeader/TodoHeader.tsx";
 import useFilter, { Filters } from "./hooks/useFilter.tsx";
@@ -40,7 +40,7 @@ function App() {
 					<section>
 						<TodoHeader />
 						<TodosList />
-						<TodoFooter />
+						{todos.length > 0 && <TodoFooter />}
 					</section>
 				</article>
 			</TodosContext.Provider>

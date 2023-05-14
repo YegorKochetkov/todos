@@ -1,8 +1,9 @@
 import React from "react";
+import styles from "./TodosHint.module.scss";
 
 function TodosHint() {
 	return (
-		<React.Fragment>
+		<section className={styles.hint}>
 			<p>
 				<b>Tab</b>, <b>Enter</b>, <b>Space</b>, <b>Delete</b> and{" "}
 				<b>Double-click</b> to manage todos
@@ -10,7 +11,7 @@ function TodosHint() {
 			<p>
 				<b>Ctrl</b> + <b>Shift</b> + <b>F</b> to focus in add todo field
 			</p>
-		</React.Fragment>
+		</section>
 	);
 }
 
