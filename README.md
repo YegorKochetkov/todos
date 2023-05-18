@@ -10,3 +10,6 @@
 2. Clone [API](https://github.com/YegorKochetkov/todos_api)
 3. Don't forget to install the [Postgresql](https://www.postgresql.org/) and create database server
 4. Replace the password in the .env file with the password of your database server
+
+#### stack
+`react`, `typescript`, `scss`
