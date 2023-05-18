@@ -1,7 +1,9 @@
 import axios from "axios";
 import { Todo } from "../types/todo.type.ts";
 
-axios.defaults.baseURL = "http://localhost:3000/api/v1";
+axios.defaults.baseURL = import.meta.env.DEV
+  ? "http://localhost:3000/api/v1"
+  : import.meta.env.API_URL;
 
 function handleError(error: any) {
   if (error.response) {
