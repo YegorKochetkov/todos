@@ -49,7 +49,9 @@ function TodoTitle() {
 				}
 				tabIndex={0}
 				className={
-					todo.completed ? styles.todoLabelCompleted : styles.todoLabel
+					!todo.completed || isUpdating
+						? styles.todoLabel
+						: styles.todoLabelCompleted
 				}
 				hidden={isEditing}
 				title={todo.title}
