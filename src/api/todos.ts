@@ -1,10 +1,9 @@
 import axios from "axios";
 import { Todo } from "../types/todo.type.ts";
 
-axios.defaults.baseURL =
-	import.meta.env.NODE_ENV === "local"
-		? "http://localhost:3000/api/v1"
-		: import.meta.env.API_URL;
+axios.defaults.baseURL = import.meta.env.DEV
+	? import.meta.env.VITE_LOCAL_API_URL
+	: import.meta.env.VITE_API_URL;
 
 function handleError(error: any) {
 	if (error.response) {
